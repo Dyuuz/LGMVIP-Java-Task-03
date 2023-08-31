@@ -13,4 +13,4 @@ In addition to the basic arithmetic operations, the calculator should provide bu
 
 The user interface should also allow the user to perform operations like clearing the display, backspace, and memory functions like saving and recalling values.
 
-Overall, a scientific calculator in Java involves creating a user interface, parsing and evaluating mathematical expressions, implementing advanced mathematical functions, and handling user input. It requires knowledge of Java programming, GUI frameworks, and advanced mathematical concepts.
+Overall, a scientific calculator in Java involves creating a user interface, parsing and evaluating mathematical expressions, implementing advanced mathematical functions, and handling user input. It requires knowledge of Java programming, java swings, event listeners and advanced mathematical concepts.
