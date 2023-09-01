@@ -25,9 +25,11 @@ public class ScientificCalculator {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
 					ScientificCalculator window = new ScientificCalculator();
 					window.Calcframe.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,7 +70,7 @@ public class ScientificCalculator {
 				CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Square root function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -86,7 +88,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Fractional function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -110,7 +112,7 @@ public class ScientificCalculator {
 			}
 			
 			catch(Exception e1) {
-				JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n" , 
+				JOptionPane.showMessageDialog(null , "Syntax Error\n" , 
 						"Factorial function error message" ,JOptionPane.WARNING_MESSAGE);
 			}
 			}
@@ -128,7 +130,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(String.valueOf(a));
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"PlusMinus function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -198,7 +200,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+sinres);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"PlusMinus function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -353,8 +355,15 @@ public class ScientificCalculator {
 		JButton DotKey = new JButton(".");
 		DotKey.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				String dot = CalcScreen.getText()+DotKey.getText();
-				CalcScreen.setText(dot);
+					if(!CalcScreen.getText().isEmpty()) {
+						String input = CalcScreen.getText();
+						String dot = input +DotKey.getText();
+						CalcScreen.setText(dot);
+					}
+					else {
+					JOptionPane.showMessageDialog(null , "You can't start an operation with a dot"  , 
+							"Number 3 function error message" ,JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		DotKey.setFont(new Font("Serif", Font.BOLD, 22));
@@ -364,6 +373,7 @@ public class ScientificCalculator {
 		JButton EqualKey = new JButton("=");
 		EqualKey.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!CalcScreen.getText().isEmpty()) {
 				try {
 					secondInput = Double.parseDouble(CalcScreen.getText());
 					if(opsPerformed=="+")
@@ -409,8 +419,12 @@ public class ScientificCalculator {
 					}
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "There's no valid operation to perform"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error"  , 
 							"Equal function error message" ,JOptionPane.WARNING_MESSAGE);
+				}
+				}
+				else {
+					CalcScreen.setText(null);
 				}
 			}
 		});
@@ -427,7 +441,7 @@ public class ScientificCalculator {
 					opsPerformed="+";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Sum function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -445,7 +459,7 @@ public class ScientificCalculator {
 					opsPerformed="-";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Minus function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -463,7 +477,7 @@ public class ScientificCalculator {
 					opsPerformed="*";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Multiply function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -481,7 +495,7 @@ public class ScientificCalculator {
 					opsPerformed="/";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Divide function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -499,7 +513,7 @@ public class ScientificCalculator {
 					opsPerformed="x^y";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Power function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -517,7 +531,7 @@ public class ScientificCalculator {
 					opsPerformed="%";
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Modulo function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -552,7 +566,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Clear function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			
@@ -572,7 +586,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Square function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -592,7 +606,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Cos function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -611,7 +625,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Tan function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -630,7 +644,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Tanh function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -649,7 +663,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Cosh function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -668,7 +682,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Sinh function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -687,7 +701,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Logarithm function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -705,7 +719,7 @@ public class ScientificCalculator {
 					CalcScreen.setText(CalcScreen.getText()+a);
 				}
 				catch(Exception e1) {
-					JOptionPane.showMessageDialog(null , "Input a value before performing the operation\n"  , 
+					JOptionPane.showMessageDialog(null , "Syntax Error\n"  , 
 							"Exponential function error message" ,JOptionPane.WARNING_MESSAGE);
 				}
 			}
@@ -767,6 +781,7 @@ public class ScientificCalculator {
 		rdbtnOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CalcScreen.setEditable(false);
+				CalcScreen.setText(null);
 				num0.setEnabled(false);
 				num1.setEnabled(false);
 				num2.setEnabled(false);
@@ -777,7 +792,6 @@ public class ScientificCalculator {
 				num7.setEnabled(false);
 				num8.setEnabled(false);
 				num9.setEnabled(false);
-				
 				EqualKey.setEnabled(false);
 				SumKey.setEnabled(false);
 				MinusKey.setEnabled(false);
